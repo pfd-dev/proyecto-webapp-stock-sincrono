@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <link rel="stylesheet" href="/src/styles/style.css">
+    <script type="module" defer src="/src/main.ts"></script>
+</head>
+
+<body id="PageUpdateProduct">
+    <nav id="BarraNavegacion" class="navbar navbar-expand-lg navbar-dark bg-black">
+        <a class="navbar-brand" href="/index.html">
+            <h1 class="h4 mb-0">sistema de ventas</h1>
+        </a>
+
+        <ul class="navbar-nav ms-auto gap-1">
+        </ul>
+    </nav>
+
+    <main class="col d-flex flex-column bg-dark">
+        <div class="row justify-content-center gap-5 p-5 m-0">
+            <section class="col col-md-9 bg-secondary d-flex flex-column gap-4 p-4 rounded">
+                <header class="d-flex justify-content-between align-items-center p-2">
+                    <h2 class="text-white">Editar Producto</h2>
+                </header>
+
+                <form id="FormularioEditarProducto">
+                    <div class="mb-3 mt-3">
+                        <label for="NombreProducto" class="form-label">Nombre Producto</label>
+                        <input type="text" class="form-control" id="NombreProducto">
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <label for="PrecioProducto" class="form-label">Precio Producto</label>
+                        <input type="text" class="form-control" id="PrecioProducto">
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Actualizar</button>
+                </form>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>

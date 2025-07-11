@@ -1,0 +1,40 @@
+{
+  "name": "proyecto-webapp-stock-sincrono",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Aplicacion web creada con HTML, CSS, JAVASCRIPT, BOOTSTRAP, REDUX y patron MVC",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "jest",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pfd-dev/proyecto-webapp-stock-sincrono.git"
+  },
+  "keywords": [],
+  "author": "YO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pfd-dev/proyecto-webapp-stock-sincrono/issues"
+  },
+  "homepage": "https://github.com/pfd-dev/proyecto-webapp-stock-sincrono#readme",
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.10",
+    "@types/jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.1",
+    "jest": "^30.0.1",
+    "ts-jest": "^29.4.0",
+    "typescript": "~5.8.3",
+    "vite-plugin-pwa": "^1.0.0",
+    "vite": "^7.0.4"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
+    "bootstrap": "^5.3.7"
+  }
+}
