@@ -7,7 +7,7 @@ export function formularioLoginController() {
     
     const formulario = document.querySelector<HTMLFormElement>('#formLogin');
     if (!formulario) {
-        console.warn('No existe el formulario');
+        // console.warn('No existe el formulario');
         return;
     }
 

@@ -73,7 +73,7 @@ export function obtenerUsuarioCookie(): IUsuario | null {
 
 export function cerrarSesion(): void {
     document.cookie = "CACHE-USUARIO-AUTENTICADO=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    console.warn("Sesión cerrada y cookie eliminada.");
+    // console.warn("Sesión cerrada y cookie eliminada.");
 }
 
 export function iniciarCreacionBBDDUsuarioCook(): void {

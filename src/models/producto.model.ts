@@ -73,7 +73,7 @@ export function eliminarProductoBBDDLS(id: number): IProducto[] {
 
 export function limpiarProductosBBDDLS(): void {
     window.localStorage.setItem(CLAVE_LS, JSON.stringify([]));
-    console.warn("La base de datos de productos fue vaciada.");
+    // console.warn("La base de datos de productos fue vaciada.");
 }
 
 export function iniciarCreacionBBDDProductosLS() {

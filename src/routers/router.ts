@@ -57,7 +57,7 @@ export function enrutador(): void {
     // Si no se encuentra ninguna página, mostrar página de error
     if (!paginaActiva) {
         window.location.href = "/404.html";
-        console.warn('No se encontró ninguna página activa');
+        // console.warn('No se encontró ninguna página activa');
         return;
     }
 
@@ -72,7 +72,7 @@ export function enrutador(): void {
         if (usuarioAutenticado) {
             rutas[paginaActiva](); // Ejecutar página privada
         } else {
-            console.warn("Acceso denegado. Debes iniciar sesión.");
+            console.log("Acceso denegado. Debes iniciar sesión.");
             const contenedor = document.querySelector("main section");
             if (!contenedor) {
                 return

@@ -70,7 +70,7 @@ export function removerProductoCarrito(id: number): number[] {
 
 export function limpiarProductosCarrito(): void {
     window.localStorage.setItem(CLAVE_CARRITO, JSON.stringify([]));
-    console.warn("El carrito fue vaciado.");
+    // console.warn("El carrito fue vaciado.");
 }
 
 export function iniciarCreacionBBDDCarritoLS(): void {
