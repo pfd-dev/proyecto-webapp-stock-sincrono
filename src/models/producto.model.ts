@@ -3,7 +3,7 @@ import { IProducto } from "../types/types";
 const CLAVE_LS = "BBDD-PRODUCTOS-STOCK";
 
 export function obtenerProductosBBDDLS(): IProducto[] {
-    const datos = localStorage.getItem(CLAVE_LS);
+    const datos = window.localStorage.getItem(CLAVE_LS);
     if (datos !== null) {
         const productos = JSON.parse(datos);
         if (Array.isArray(productos)) {
@@ -14,7 +14,7 @@ export function obtenerProductosBBDDLS(): IProducto[] {
 }
 
 export function crearProductoBBDDLS(nombre: string, precio: number): IProducto[] {
-    const datos = localStorage.getItem(CLAVE_LS);
+    const datos = window.localStorage.getItem(CLAVE_LS);
     let productos: IProducto[] = [];
 
     if (datos !== null) {
@@ -29,12 +29,12 @@ export function crearProductoBBDDLS(nombre: string, precio: number): IProducto[]
 
     productos.push(nuevoProducto);
 
-    localStorage.setItem(CLAVE_LS, JSON.stringify(productos));
+    window.localStorage.setItem(CLAVE_LS, JSON.stringify(productos));
     return productos;
 }
 
 export function actualizarProductoBBDDLS(productoEditado: IProducto): IProducto[] {
-    const datos = localStorage.getItem(CLAVE_LS);
+    const datos = window.localStorage.getItem(CLAVE_LS);
     let productos: IProducto[] = [];
 
     if (datos !== null) {
@@ -47,12 +47,12 @@ export function actualizarProductoBBDDLS(productoEditado: IProducto): IProducto[
         }
     }
 
-    localStorage.setItem(CLAVE_LS, JSON.stringify(productos));
+    window.localStorage.setItem(CLAVE_LS, JSON.stringify(productos));
     return productos;
 }
 
 export function eliminarProductoBBDDLS(id: number): IProducto[] {
-    const datos = localStorage.getItem(CLAVE_LS);
+    const datos = window.localStorage.getItem(CLAVE_LS);
     let productos: IProducto[] = [];
 
     if (datos !== null) {
@@ -67,11 +67,23 @@ export function eliminarProductoBBDDLS(id: number): IProducto[] {
         }
     }
 
-    localStorage.setItem(CLAVE_LS, JSON.stringify(nuevosProductos));
+    window.localStorage.setItem(CLAVE_LS, JSON.stringify(nuevosProductos));
     return nuevosProductos;
 }
 
-// export function limpiarProductosBBDDLS(): void {
-//     localStorage.setItem(CLAVE_LS, JSON.stringify([]));
-//     console.warn("La base de datos de productos fue vaciada.");
-// }
+export function limpiarProductosBBDDLS(): void {
+    window.localStorage.setItem(CLAVE_LS, JSON.stringify([]));
+    console.warn("La base de datos de productos fue vaciada.");
+}
+
+export function iniciarCreacionBBDDProductosLS() {
+    const datos = window.localStorage.getItem(CLAVE_LS);
+    let productos: IProducto[] = [];
+
+    if (datos !== null) {
+        productos = JSON.parse(datos);
+    }
+
+    window.localStorage.setItem(CLAVE_LS, JSON.stringify(productos));
+}
+

@@ -59,7 +59,7 @@ export function inicializarBarraNavegacion() {
 
     generarLink(linksRutas.rutasDefault, contenedorLinks);
 
-    if (!store.getState().usuario.usuario) {
+    if (!store.getState().usuario.autenticado) {
         generarLink(linksRutas.rutasPublicas, contenedorLinks);
     } else {
         generarLink(linksRutas.rutasPrivadas, contenedorLinks);

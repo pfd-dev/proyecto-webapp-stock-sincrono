@@ -5,7 +5,7 @@ import { obtenerProductosBBDDLS } from "./producto.model";
 const CLAVE_CARRITO = "CACHE-PRODUCTOS-CARRITO";
 
 export function obtenerProductoCarritoCache(): IProducto[] {
-    const datos = localStorage.getItem(CLAVE_CARRITO);
+    const datos = window.localStorage.getItem(CLAVE_CARRITO);
     let idsCarrito: number[] = [];
 
     if (datos !== null) {
@@ -31,7 +31,7 @@ export function obtenerProductoCarritoCache(): IProducto[] {
 }
 
 export function agregarProductoCarrito(id: number): number[] {
-    const datos = localStorage.getItem(CLAVE_CARRITO);
+    const datos = window.localStorage.getItem(CLAVE_CARRITO);
     let ids: number[] = [];
 
     if (datos !== null) {
@@ -44,12 +44,12 @@ export function agregarProductoCarrito(id: number): number[] {
         nuevosIDs.push(ids[i]);
     }
 
-    localStorage.setItem(CLAVE_CARRITO, JSON.stringify(nuevosIDs));
+    window.localStorage.setItem(CLAVE_CARRITO, JSON.stringify(nuevosIDs));
     return nuevosIDs;
 }
 
 export function removerProductoCarrito(id: number): number[] {
-    const datos = localStorage.getItem(CLAVE_CARRITO);
+    const datos = window.localStorage.getItem(CLAVE_CARRITO);
     let ids: number[] = [];
 
     if (datos !== null) {
@@ -64,19 +64,23 @@ export function removerProductoCarrito(id: number): number[] {
         }
     }
 
-    localStorage.setItem(CLAVE_CARRITO, JSON.stringify(idsActualizados));
+    window.localStorage.setItem(CLAVE_CARRITO, JSON.stringify(idsActualizados));
     return idsActualizados;
 }
 
 export function limpiarProductosCarrito(): void {
-    localStorage.setItem(CLAVE_CARRITO, JSON.stringify([]));
+    window.localStorage.setItem(CLAVE_CARRITO, JSON.stringify([]));
     console.warn("El carrito fue vaciado.");
 }
 
-// export function iniciarCreacionBBDD(): void {
-//     const datos = localStorage.getItem(CLAVE_CARRITO);
+export function iniciarCreacionBBDDCarritoLS(): void {
+    const datos = window.localStorage.getItem(CLAVE_CARRITO);
 
-//     if (datos === null) {
-//         localStorage.setItem(CLAVE_CARRITO, JSON.stringify([]));
-//     }
-// }
+    let carrito: IProducto[] = [];
+
+    if (datos !== null) {
+        carrito = JSON.parse(datos);
+    }
+
+    window.localStorage.setItem(CLAVE_CARRITO, JSON.stringify(carrito));
+}

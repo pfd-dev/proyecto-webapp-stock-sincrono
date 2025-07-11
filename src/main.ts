@@ -1,3 +1,4 @@
+import { iniciarCreacionBBDDProductosLS } from './models/producto.model';
 // Store
 import store from './store/store';
 import { inciarEstadoCarrito } from './slices/carritoSlice';
@@ -7,6 +8,8 @@ import { cargarUsuarioCookie } from './slices/userSlice';
 import { enrutador } from './routers/router';
 // UIs
 import { inicializarBarraNavegacion } from './controllers/navbar/navbar.controller';
+import { iniciarCreacionBBDDUsuarioCook } from './models/usuario.model';
+import { iniciarCreacionBBDDCarritoLS } from './models/carrito.model';
 
 function iniciarCargaDatosBBDD() {
     store.dispatch(cargarProductosBBDDLocalStorage());
@@ -20,6 +23,10 @@ function inicializarCargaDatosUI() {
 }
 
 async function main() {
+    iniciarCreacionBBDDProductosLS();
+    iniciarCreacionBBDDUsuarioCook();
+    iniciarCreacionBBDDCarritoLS();
+
     iniciarCargaDatosBBDD();
 
     inicializarCargaDatosUI();

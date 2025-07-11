@@ -43,7 +43,10 @@ function guardarUsuarioCookie(nombre: string): void {
     fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000));
     const expiracion = "; expires=" + fecha.toUTCString();
 
-    const cookieFinal = "CACHE-USUARIO-AUTENTICADO=" + encodeURIComponent(nombre) + expiracion + "; path=/";
+    const cookieFinal = "CACHE-USUARIO-AUTENTICADO=" + nombre + expiracion + "; path=/";
+
+    console.log("se creo la cookie:")
+    console.log(cookieFinal)
     document.cookie = cookieFinal;
 }
 
@@ -51,13 +54,14 @@ export function obtenerUsuarioCookie(): IUsuario | null {
     const partes = document.cookie.split(";");
 
     for (let i = 0; i < partes.length; i++) {
-        let cookieActual = partes[i].trim();
+        const cookie = partes[i].trim();
 
-        if (cookieActual.indexOf("CACHE-USUARIO-AUTENTICADO=") === 0) {
-            const valor = cookieActual.substring("CACHE-USUARIO-AUTENTICADO=".length);
+        const partesCookie = cookie.split("=");
+
+        if (partesCookie[0] === "CACHE-USUARIO-AUTENTICADO") {
             const usuario: IUsuario = {
                 id: 1000,
-                nombre: decodeURIComponent(valor)
+                nombre: partesCookie[1]
             };
             return usuario;
         }
@@ -66,17 +70,18 @@ export function obtenerUsuarioCookie(): IUsuario | null {
     return null;
 }
 
+
 export function cerrarSesion(): void {
     document.cookie = "CACHE-USUARIO-AUTENTICADO=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     console.warn("Sesión cerrada y cookie eliminada.");
 }
 
-// export function iniciarCreacionBBDD(): void {
-//     const usuario = obtenerUsuarioCookie();
+export function iniciarCreacionBBDDUsuarioCook(): void {
+    const usuario = obtenerUsuarioCookie();
 
-//     if (usuario !== null) {
-//         guardarUsuarioCookie(usuario.nombre);
-//     } else {
-//         guardarUsuarioCookie("");
-//     }
-// }
+    if (usuario !== null) {
+        guardarUsuarioCookie(usuario.nombre);
+    } else {
+        guardarUsuarioCookie("");
+    }
+}

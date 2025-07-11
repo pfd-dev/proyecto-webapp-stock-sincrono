@@ -4,6 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
     root: '.',              // Carpeta base
+    base: './',
     publicDir: 'public',    // Archivos estáticos
     build: {
         outDir: 'dist',     // Carpeta de salida

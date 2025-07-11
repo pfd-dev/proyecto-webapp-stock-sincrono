@@ -61,7 +61,7 @@ export function enrutador(): void {
         return;
     }
 
-    const usuarioAutenticado = store.getState().usuario.usuario;
+    const usuarioAutenticado = store.getState().usuario.autenticado;
 
     if (rutasPublicas.includes(paginaActiva)) {
         rutas[paginaActiva](); // Ejecutar página pública

@@ -6,10 +6,12 @@ import { cerrarSesion, obtenerUsuarioCookie, validarUsuario } from "../models/us
 
 interface UsuarioState {
     usuario: IUsuario | null;
+    autenticado: boolean;
 }
 
 const initialState: UsuarioState = {
-    usuario: null
+    usuario: null,
+    autenticado: false
 };
 
 const usuarioSlice = createSlice({
@@ -18,19 +20,24 @@ const usuarioSlice = createSlice({
     reducers: {
         cargarUsuarioCookie(state) {
             const usuario = obtenerUsuarioCookie();
-            if (usuario) {
+            console.log("usuario cargado")
+            console.log(usuario)
+            if (usuario?.nombre !== '') {
                 state.usuario = usuario;
+                state.autenticado = true;
             }
         },
         validarDatosLogin(state, action: PayloadAction<{ nombre: string; contrasenia: string }>) {
             const usuario = validarUsuario(action.payload.nombre, action.payload.contrasenia);
             if (usuario) {
                 state.usuario = usuario;
+                state.autenticado = true;
             }
         },
         logout(state) {
             cerrarSesion();
             state.usuario = null;
+            state.autenticado = false;
         }
     }
 });
