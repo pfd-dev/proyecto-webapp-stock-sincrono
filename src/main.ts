@@ -23,6 +23,7 @@ function inicializarCargaDatosUI() {
 }
 
 async function main() {
+    1 = "a";
     iniciarCreacionBBDDProductosLS();
     iniciarCreacionBBDDUsuarioCook();
     iniciarCreacionBBDDCarritoLS();
